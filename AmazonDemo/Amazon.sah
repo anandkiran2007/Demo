@@ -1,0 +1,26 @@
+_include("PageObjects/AmazonPageObjects/US_AmazonPageObjects/LoginPageObjects.sah")
+_include("PageObjects/AmazonPageObjects/US_AmazonPageObjects/MailPageObjects.sah")
+_include("PageObjects/AmazonPageObjects/US_AmazonPageObjects/SearchPageObjects.sah")
+_include("PageObjects/CommonPageObjects/CommonPageObjects.sah")
+_include("PageObjects/GmailPageObjects/GmailPageObjects.sah")
+_include("Functions/AmazonFunctions/AmazonFunctions.sah")
+_include("Functions/GmailFunctions/GmailFunctions.sah")
+_include("Functions/CommonFunctions/CommonFunctions.sah")
+
+
+var $testCase = _testcase("1","Checking Email getting triggered from amazon for a product")
+	$testCase.start();
+		NavigateToUrl($config["amazon_url"])
+		PopUphandle();
+		//Provide valid user name and password for amazon site
+		LoginToAmazon("XXXXXXX@gmail.com","**********")
+		NavigateToUrl($config["amazon_url"])
+		SearchProduct("bose");
+		var $nameOfProductSelected = ChooseProduct(0);
+		SendMailTo("XXXXXXX@gmail.com");
+		//var $nameOfProductSelected = "Bose SoundLink Mini Bluetooth Speaker"
+		LoginToGmail($config["gmail_url"],"XXXXXXX","*********")
+		GmailSearch($nameOfProductSelected);
+		AssertProductInGmail($nameOfProductSelected)
+		GmailLogout();
+	$testCase.end();

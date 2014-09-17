@@ -1,0 +1,5 @@
+var $config = {
+
+	"amazon_url" 	: "http://www.amazon.com",
+	"gmail_url"		: "https://mail.google.com/"
+}
