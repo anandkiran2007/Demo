@@ -1,0 +1,29 @@
+function LoginToGmail($url,$username,$password)
+{
+	NavigateToUrl($url)
+	SetValue($gmailLoginObjects["username_textbox"],$username)
+	SetValue($gmailLoginObjects["password_textbox"],$password)
+	Click($gmailLoginObjects["submit_button"])
+}
+
+
+function GmailSearch($searchText)
+{
+	SetValue($gmalSearchObjects["search_textbox"],$searchText);
+	Click($gmalSearchObjects["search_button"]);
+	_wait(2000);
+	var $tableCells = _collect("_cell","/xY a4W/")
+	_click($tableCells[0]);	
+}
+
+function AssertProductInGmail($productName)
+{
+	_assertTrue(_isVisible(_heading2("Anand Kiran wants you to see this item at Amazon.com")));
+	_assert(_isVisible(_link($productName)));
+}
+
+function GmailLogout()
+{
+	Click($gmailLoginObjects["clickon_account_image"])
+	Click($gmailLoginObjects["signout_link"]);
+}

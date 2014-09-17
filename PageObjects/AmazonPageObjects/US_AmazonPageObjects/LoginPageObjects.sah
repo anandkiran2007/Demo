@@ -1,0 +1,9 @@
+var $amazonLoginObjects = {
+
+		"signin_link" 		: "_span(\"nav-signin-title\")",
+		"user_signin_text"	: "Hello. Sign in",
+		"email_textbox"		: "_emailbox(\"email\")",
+		"password_textbox"	: "_password(\"password\")",
+		"signin_button"		: "_submit(\"signInSubmit-input\")",
+		"signout_link"		: "_link(\"nav-item-signout\")"
+}
