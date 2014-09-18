@@ -1,0 +1,39 @@
+function LoginToGmail($url,$username,$password)
+{
+	NavigateToUrl($url)
+	SetValue($gmailLoginObjects["username_textbox"],$username)
+	SetValue($gmailLoginObjects["password_textbox"],$password)
+	Click($gmailLoginObjects["submit_button"])
+}
+
+
+function GmailSearch($searchText)
+{
+	SetValue($gmalSearchObjects["search_textbox"],$searchText);
+	Click($gmalSearchObjects["search_button"]);
+	_wait(2000);
+	_set($totalRecordsCount, _table("F cf zt[1]").rows.length);
+	if($totalRecordsCount > 0)
+	{
+		var $tableCells = _collect("_cell","/xY a4W/")
+		_click($tableCells[0]);	
+
+		if(CheckObjectVisibility($gmalSearchObjects["search_for_content"]))
+		{
+			Click($gmalSearchObjects["search_for_content"])
+		}
+	}
+
+}
+
+function AssertProductInGmail($productName)
+{
+	_assertTrue(_isVisible(_accessor($gmalSearchObjects["search_for"])));
+	_assert(_isVisible(_link($productName)));
+}
+
+function GmailLogout()
+{
+	Click($gmailLoginObjects["clickon_account_image"])
+	Click($gmailLoginObjects["signout_link"]);
+}

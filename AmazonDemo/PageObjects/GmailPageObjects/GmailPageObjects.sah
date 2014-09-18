@@ -1,0 +1,19 @@
+var $gmailLoginObjects = {
+
+	"username_textbox"		: "_emailbox(\"Email\")",
+	"password_textbox"		: "_password(\"Passwd\")",
+	"submit_button"			: "_submit(\"signIn\")",
+	"gmail_logo"			: "_span(\"gb_Fa\")",
+	"persistant_checkbox" 	: "_checkbox(\"PersistentCookie\")",
+	"signout_link"			: "_link(\"Sign out\")",
+	"clickon_account_image" : "_span(\"gb_Z gbii\")"
+
+}
+
+var $gmalSearchObjects = {
+
+	"search_textbox"			: "_textbox(\"q\")",
+	"search_button"				: "_span(\"gbqfi gb_Fa\")",
+	"search_for_content"		: "_div(\"gE hI\")",
+	"search_for"				: "_heading2(\"/wants you to see this item at Amazon.com/\")"
+}

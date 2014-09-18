@@ -1,0 +1,7 @@
+var $amazonMailObjects = {
+
+		"share_link"			: "_link(\"Share via e-mail\")",
+		"enter_mail_textbox"	: "_div(\"ac_placeholder\")",
+		"copyme_checkbox"		: "_checkbox(\"copyMeBox\")",
+		"send_email_button"		: "_button(\"Send e-mail\")"
+}

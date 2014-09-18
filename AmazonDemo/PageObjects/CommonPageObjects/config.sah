@@ -1,0 +1,11 @@
+	var $config = {
+
+	"amazon_url" 		: "http://www.amazon.com",
+	"locale"			: "US",
+	"gmail_url"			: "https://mail.google.com/",
+	"amazon_login_username"	: "XXXXXX@gmail.com",
+	"amazon_login_password"	: "XXXXXXX",
+	"send_to_mail"			: "XXXXXXX@gmail.com",
+	"gmail_login_username"	: "XXXXXX",
+	"gmail_login_password"	: "********"
+}

@@ -1,0 +1,116 @@
+function NavigateToUrl($url)
+{
+		_navigateTo($url);
+}
+
+function CheckObjectVisibility($object)
+{
+	if(_isVisible(_accessor($object)))
+	{
+		_log("Object-"+$object+ " found","success")	
+		return true;
+	}
+	else
+	{
+		_log("Object-"+$object+ " not found","custom2")	
+		return false;
+	}
+}
+
+
+function Click($object)
+{
+	if(CheckObjectVisibility($object))
+	{
+		_click(_accessor($object));
+	}
+}
+
+
+function SetValue($object,$value)
+{
+	if(CheckObjectVisibility($object))
+	{
+		_setValue(_accessor($object), $value);
+	}
+}
+
+function MouseHover($object)
+{
+	if(CheckObjectVisibility($object))
+	{	
+		_mouseOver(_accessor($object));
+	}
+}
+function CheckBox($object,$enableDisableCheckBox)
+{
+	if(CheckObjectVisibility($object))
+	{
+		if($enableDisableCheckBox)
+		{
+			if(_accessor($object.checked))
+			{	
+				_log("Check box already checked")
+			}
+			else
+			{
+				_click(_checkbox("copyMeBox"));
+			}
+		}
+		else
+		{
+			if(!_accessor($object.checked))
+			{	
+				_click(_checkbox("copyMeBox"));
+			}
+			else
+			{
+				_log("Check box already unchecked")
+			}
+		}
+	}
+}	
+
+
+
+function testCaseCrawler($csvPath,$executionType)
+{
+    var $fileContents = _readCSVFile($csvPath);
+    _log($fileContents)
+    var $order = 1;
+    var $map = {};
+	var $tc_List = "";
+	var $testCaseList = [];
+        for (var $i=0; $i<$fileContents[0].length; $i++)
+            {
+                var $execType = $fileContents[0][$i];
+
+                if(($execType == $executionType))
+                    {           
+                       	_log("Matching")
+                       	
+                     	for (var $j=0; $j<$fileContents.length; $j++)
+                            {
+                        	    	
+                            	var $testCases = [];
+                                if($fileContents[$j][$i] !="")
+                                    {
+										if($fileContents[$j][$i] == "Y" && $fileContents[$j][0] != "")
+											{
+
+												$testCases.push($fileContents[$j][0])
+												$testCases.push($fileContents[$j][1])
+												$testCaseList.push($testCases);
+												_log($testCaseList)
+												//$tc_List = $tc_List + $fileContents[$j][0] + ",";		
+											}
+                                    }
+                            }              
+                    }
+                    else
+                    {
+                    	$execType = "";
+                    }
+                }
+				return ($testCaseList);
+}

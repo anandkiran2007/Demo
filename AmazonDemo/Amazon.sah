@@ -1,0 +1,26 @@
+_include("PageObjects/CommonPageObjects/config.sah")
+_include("Functions/CommonFunctions/CommonFunctions.sah")
+_include("PageObjects/AmazonPageObjects/"+$config["locale"]+"_AmazonPageObjects/LoginPageObjects.sah")
+_include("PageObjects/AmazonPageObjects/"+$config["locale"]+"_AmazonPageObjects/MailPageObjects.sah")
+_include("PageObjects/AmazonPageObjects/"+$config["locale"]+"_AmazonPageObjects/SearchPageObjects.sah")
+_include("PageObjects/GmailPageObjects/GmailPageObjects.sah")
+_include("Functions/AmazonFunctions/AmazonFunctions.sah")
+_include("Functions/GmailFunctions/GmailFunctions.sah")
+
+
+
+var $testCase = _testcase("1","Checking Email getting triggered from amazon for a product")
+	$testCase.start();
+		NavigateToUrl($config["amazon_url"])
+		PopUphandle();
+		LoginToAmazon($config["amazon_login_username"],$config["amazon_login_password"])
+		SearchProduct("bose");
+		var $nameOfProductSelected = ChooseProduct(0);
+		SendMailTo($config["send_to_mail"]);
+		LoginToGmail($config["gmail_url"],$config["gmail_login_username"],$config["gmail_login_password"])
+		GmailSearch($nameOfProductSelected);
+		AssertProductInGmail($nameOfProductSelected)
+		GmailLogout();
+	$testCase.end();
+
+
