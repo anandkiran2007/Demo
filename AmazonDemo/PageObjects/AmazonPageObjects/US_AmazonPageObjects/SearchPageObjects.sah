@@ -1,7 +1,0 @@
-var $amazonSearchObjects = {
-
-		"do_not_show_again_checkbox" 	: "_checkbox(\"redir-opt-out\")",
-		"amazon_com_button"				: "_span(\"redir-a-button-sec-center\")",
-		"search_box_input"				: "_textbox(\"field-keywords\")",
-		"search_product_button"			: "_submit(\"nav-submit-input\")"
-}
