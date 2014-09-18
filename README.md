@@ -14,10 +14,17 @@ This is sample project which uses sahi pro for automating the following flow
 
 
 
+Pre -requsities 
+1. Sahi pro 
+2. Ant
+
 Steps to run the scripts 
 
 1. Install Sahi pro 
 2. Copy "AmazonDemo" folder and place them under /userdata/scripts folder 
 3. Place "userdata.properties" file in /userdata/config
 4. Place "build.xml" file under the sahi folder 
+5. Copy the AmazonDemo and place it under /userdata/scripts folder
+6. Go to AmazonDemo/PageObjects/CommonPageObjects/config.sah , provide the valid credentials for testing the code
+7. Now cd to sahi folder and run the command ant -f build.xml 
 
